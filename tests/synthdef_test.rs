@@ -10,7 +10,7 @@ use std::{
     iter,
     process::Command,
 };
-use tempdir::TempDir;
+use tempfile::TempDir;
 
 #[test]
 fn test_synthdefs() {
@@ -126,7 +126,7 @@ fn compare(lhs: &[u8], rhs: &[u8], name: &str) {
 }
 
 fn temp_dir() -> TempDir {
-    TempDir::new("sorceress-tests").unwrap()
+    TempDir::new().unwrap()
 }
 
 mod denorm {

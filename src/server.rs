@@ -163,7 +163,9 @@ mod osc_router;
 mod private;
 
 use private::{Message, Packet, ReplyMatcher};
-use rosc::{decoder::decode, encoder::encode, OscBundle, OscError, OscMessage, OscPacket, OscType};
+use rosc::{
+    decoder::decode_udp, encoder::encode, OscBundle, OscError, OscMessage, OscPacket, OscType,
+};
 use std::convert::TryInto;
 use std::{
     error, fmt, io,
@@ -344,9 +346,9 @@ impl Server {
             .socket
             .recv(buffer)
             .map_err(|err| Error(ErrorInner::Recv(err)))?;
-        let packet = decode(&buffer[..len]).map_err(|err| Error(ErrorInner::OscDecode(err)))?;
+        let packet = decode_udp(&buffer[..len]).map_err(|err| Error(ErrorInner::OscDecode(err)))?;
         log::debug!("recv: {:?}", packet);
-        Ok(packet)
+        Ok(packet.1)
     }
 
     /// Clears all scheduled bundles and frees all synths.

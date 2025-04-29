@@ -1,6 +1,6 @@
 [package]
 name = "sorceress"
-version = "0.2.0"
+version = "0.2.1"
 authors = ["Wesley Merkel <ooesili@gmail.com>"]
 license = "GPL-3.0-or-later"
 repository = "https://github.com/ooesili/sorceress"
@@ -10,21 +10,15 @@ keywords = ["audio", "bindings", "creative", "music", "supercollider"]
 categories = ["api-bindings", "multimedia::audio"]
 edition = "2018"
 
-exclude = [
-  ".semaphore/*",
-  "assets/*",
-  "ci/*",
-  "default.nix",
-  "nix/*",
-]
+exclude = [".semaphore/*", "assets/*", "ci/*", "default.nix", "nix/*"]
 
 [dependencies]
-rosc = "0.5.1"
-log = "0.4.14"
-serde_json = "1.0.64"
-serde = { version = "1.0.124", features = ["derive"] }
-thiserror = "1.0.24"
+rosc = "0.11.4"
+log = "0.4.27"
+serde_json = "1.0.140"
+serde = { version = "1.0.219", features = ["derive"] }
+thiserror = "2.0.12"
 
 [dev-dependencies]
-pretty_assertions = "0.6.1"
-tempdir = "0.3.7"
+pretty_assertions = "1.4.1"
+tempfile = "3.19.1"
