@@ -1057,8 +1057,8 @@ impl BufferQuery {
     ///
     /// # Arguments
     ///
-    /// * `buffer_numbers` - The numbers of the buffers to query. Information on all of the
-    /// specified buffers will be returned in a single [`Reply::BufferInfo`] message.
+    /// * `buffer_numbers` - The numbers of the buffers to query.Information on all of the specified
+    ///   buffers will be returned in a single [`Reply::BufferInfo`] message.
     pub fn new(buffer_numbers: impl IntoIterator<Item = i32>) -> BufferQuery {
         BufferQuery {
             buffer_numbers: buffer_numbers.into_iter().collect(),
