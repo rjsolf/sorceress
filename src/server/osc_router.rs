@@ -17,6 +17,8 @@
 use rosc::{OscMessage, OscType};
 use std::collections::HashMap;
 
+type Handler<T> = Box<dyn Fn(&mut MatchedArgs) -> Option<T>>;
+
 pub struct Router<T> {
     matchers: Vec<Matcher<T>>,
 }
@@ -50,7 +52,7 @@ impl<T> Router<T> {
 pub struct Matcher<T> {
     addr: &'static str,
     actions: Vec<MatchAction>,
-    handler: Option<Box<dyn Fn(&mut MatchedArgs) -> Option<T>>>,
+    handler: Option<Handler<T>>,
 }
 
 impl<T> Matcher<T> {
