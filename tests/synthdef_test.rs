@@ -118,8 +118,8 @@ fn compare(lhs: &[u8], rhs: &[u8], name: &str) {
         denorm::SynthDefFile::new(&decoder::SynthDefFile::decode(synthdef).unwrap())
     };
     assert_eq!(
-        format(&lhs),
-        format(&rhs),
+        format(lhs),
+        format(rhs),
         "comparing synth definitions for synthdef: {}",
         name
     );

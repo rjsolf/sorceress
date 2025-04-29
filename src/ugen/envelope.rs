@@ -219,7 +219,6 @@ impl Env {
             .map(|tree| Value(tree.map(|curve| curve.value())));
 
         for (((level, time), curve_shape), curve_value) in levels
-            .into_iter()
             .zip(self.times.into_iter().cycle())
             .zip(curve_shapes.cycle())
             .zip(curve_values.cycle())

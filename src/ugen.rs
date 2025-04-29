@@ -1113,7 +1113,6 @@ impl Input for SoundIn {
                         // replace with SuperCollider's probably more space efficient implementation
                         let is_consecutive = bus_numbers
                             == (start..(start + bus_numbers.len()))
-                                .into_iter()
                                 .map(|x| x as f32)
                                 .collect::<Vec<_>>();
                         Some(is_consecutive)

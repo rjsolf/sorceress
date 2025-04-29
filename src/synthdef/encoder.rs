@@ -51,7 +51,7 @@ pub fn encode_synth_defs(synth_defs: impl IntoIterator<Item = SynthDef>) -> Vec<
         .collect::<Vec<_>>();
     let graphs = expanded_synths
         .iter()
-        .map(|(name, expanded_inputs, params)| SynthDefGraph::new(name, &expanded_inputs, params))
+        .map(|(name, expanded_inputs, params)| SynthDefGraph::new(name, expanded_inputs, params))
         .collect();
 
     let mut buffer = Vec::new();
@@ -203,7 +203,7 @@ fn encode_graphs(graphs: Vec<SynthDefGraph>, out: &mut Vec<u8>) {
 
         write_i32(out, graph.parameter_names.len() as i32);
         for (parameter_name, parameter_index) in graph.parameter_names.iter() {
-            write_pstring(out, &parameter_name);
+            write_pstring(out, parameter_name);
             write_i32(out, *parameter_index as i32);
         }
 

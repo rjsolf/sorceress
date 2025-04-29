@@ -48,7 +48,7 @@ impl<T> VecTree<T> {
                 if children.is_empty() {
                     return None;
                 }
-                path.get(0)
+                path.first()
                     .and_then(|index| children[index % children.len()].get_path(&path[1..]))
             }
         }

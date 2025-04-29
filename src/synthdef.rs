@@ -165,8 +165,10 @@ impl From<Rate> for i8 {
 /// A number of UGens implement "done actions". These allow one to optionally free or pause the
 /// enclosing synth and other related nodes when the UGen is finished.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Default)]
 pub enum DoneAction {
     /// Do nothing when the UGen is finished.
+    #[default]
     None = 0,
     /// Pause the enclosing synth, but do not free it.
     PauseSelf = 1,
@@ -200,11 +202,6 @@ pub enum DoneAction {
     FreeSelfResumeNext = 15,
 }
 
-impl Default for DoneAction {
-    fn default() -> DoneAction {
-        DoneAction::None
-    }
-}
 
 impl Input for DoneAction {
     fn into_value(self) -> Value {
@@ -651,7 +648,6 @@ impl Input for UGenSpec<UGenInput> {
             } else {
                 VecTree::Branch(
                     (0..outputs.len())
-                        .into_iter()
                         .map(|output_index| {
                             VecTree::Leaf(Scalar::Ugen {
                                 output_index: output_index as i32,
