@@ -294,7 +294,7 @@ type Result<T> = std::result::Result<T, Error>;
 /// The error type of decoding operations.
 #[derive(Debug)]
 pub enum Error {
-    /// An error indiciating that the type ID field of the synth definition file was invalid.
+    /// An error indicating that the type ID field of the synth definition file was invalid.
     ///
     /// The value inside the variant is the unexpected type ID that was read.
     BadTypeID(i32),

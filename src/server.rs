@@ -481,7 +481,7 @@ pub struct ControlRange {
 }
 
 impl ControlRange {
-    /// Create a new list of values for a range of adjcent controls.
+    /// Create a new list of values for a range of adjacent controls.
     pub fn new<V>(
         start_id: impl Into<ControlID>,
         values: impl IntoIterator<Item = V>,
@@ -1097,7 +1097,7 @@ impl AsyncCommand for BufferQuery {
 #[derive(Debug, Clone, PartialEq, PartialOrd)]
 #[non_exhaustive]
 pub enum Reply {
-    /// Sent in reponse to asynchronous commands where no additional information is required.
+    /// Sent in response to asynchronous commands where no additional information is required.
     Done,
 
     /// Sent in response to [`Notify`].
