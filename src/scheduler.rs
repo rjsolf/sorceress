@@ -214,3 +214,33 @@ where
         self.init(logical_time)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_scheduler() {
+        let mut beats = (0..4).into_iter();
+
+        let scheduler = Scheduler::new()
+            .ahead_by(Duration::from_millis(250))
+            .run(|_| {
+                move |_| {
+                    let _beat = beats.next()?;
+                    Some(Duration::from_millis(500))
+                }
+            });
+
+        match scheduler {
+            Ok(_) => assert!(true),
+            Err(_) => assert!(false),
+        }
+    }
+
+    #[test]
+    fn test_scheduler_if_is_live_reloading_not_enabled_by_default() {
+        let scheduler = Scheduler::new().is_live_reloading_enabled();
+        assert_eq!(scheduler, false)
+    }
+}
