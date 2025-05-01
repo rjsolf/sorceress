@@ -24,6 +24,16 @@ $ nix-shell
 
 Now you should be able to run `cargo test`, `cargo build`, etc.
 
+### Code coverage
+
+You can use [tarpaulin](https://github.com/xd009642/tarpaulin) crate to generate a code coverage report. 
+
+For example, after installing the tarpaulin crate:
+
+```bash
+cargo tarpaulin --out lcov html --output-dir target
+```
+
 ## Issues
 
 If you are filing a bug report please use the following template.
