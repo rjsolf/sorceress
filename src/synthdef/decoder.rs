@@ -17,12 +17,12 @@
 //! A synth definition file format decoder.
 //!
 //! This module provides the [`decode_synthdef_file`] function which decodes a file in the [synth
-//! defintiion file format] into a [data structure](). In most applications synth defintiion files
+//! definition file format] into a [data structure](). In most applications synth definition files
 //! are encoded from in-memory data structures and decoded by the SuperCollider server, so this
-//! module will not be needed. Decoding is primarily useful for converting synth defintiion files
-//! into a human readable format when debugging synth defintiions.
+//! module will not be needed. Decoding is primarily useful for converting synth definition files
+//! into a human readable format when debugging synth definitions.
 //!
-//! [synth defintiion file format]: https://doc.sccode.org/Reference/Synth-Definition-File-Format.html
+//! [synth definition file format]: https://doc.sccode.org/Reference/Synth-Definition-File-Format.html
 
 use std::{
     fmt,

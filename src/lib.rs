@@ -215,7 +215,7 @@
 //!   language.
 //!
 //! * Go through the [Getting Started With SuperCollider] tutorial series. This will teach you the
-//!   all of the fundementals of SuperCollider and how to boot **scsynth** on your computer.
+//!   all of the fundamentals of SuperCollider and how to boot **scsynth** on your computer.
 //!
 //! * Poke around the [Server Command Reference] to understand all of the OSC commands that
 //!   SuperCollider accepts. The [server](crate::server) module does not yet contain all of these

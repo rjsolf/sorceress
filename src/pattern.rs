@@ -17,7 +17,7 @@
 //! A module for defining patterns.
 //!
 //! This module provides an expressive API for describing sequences of events. A [`Pattern`] is a
-//! collection of events with timing information. Patterns can be embedded into other paterns to
+//! collection of events with timing information. Patterns can be embedded into other patterns to
 //! form larger sequences or can be combined in parallel to allow complex sections of music to be
 //! decomposed into small independent sequences.
 //!
@@ -137,8 +137,8 @@ enum PatternInner<M> {
 pub struct Event<M> {
     /// The "logical time" delay until the next event. Instead of being specified as a
     /// [`Duration`](std::time::Duration), `delta` is a floating point number. This lets whatever
-    /// schedules the event determine how the `delta` value should be intepreted. For example: a
-    /// tempo-aware scheduler can intepret the delta as a number of beats.
+    /// schedules the event determine how the `delta` value should be interpreted. For example: a
+    /// tempo-aware scheduler can interpret the delta as a number of beats.
     pub delta: f64,
 
     /// The event data or a musical rest.

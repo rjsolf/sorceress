@@ -273,7 +273,7 @@ where
     }
 }
 
-/// A snapshot of the interal state of a [`Player`].
+/// A snapshot of the internal state of a [`Player`].
 ///
 /// Returned by [`PlayerJob::snapshot`]. [`Scheduler`](crate::scheduler::Scheduler) uses snapshots
 /// to save and restore the state of a `Player` during live-reloading.

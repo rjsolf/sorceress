@@ -244,7 +244,7 @@ impl Server {
     /// hang up first, so you can safely [`unwrap`](std::result::Result::unwrap) the errors
     /// returned by [`Receiver::recv()`](std::sync::mpsc::Receiver::recv).
     ///
-    /// If you no longer wish to receive from the channel you should drop it prompty. Messages will
+    /// If you no longer wish to receive from the channel you should drop it promptly. Messages will
     /// accumulate in the channel until the `Receiver` is is dropped.
     ///
     /// # Examples
@@ -815,7 +815,7 @@ impl AsyncCommand for BufferAllocate {
 
 /// Allocate buffer space and reads a sound file.
 ///
-/// Allocates buffer with the given number of channels and up to the given numer of frames,
+/// Allocates buffer with the given number of channels and up to the given number of frames,
 /// depending on the size of the file. Reads sound file data from the given starting frame in the
 /// file. If the number of frames argument is less than or equal to zero, the entire file is read.
 /// The sound file will determine how many channels are allocated for the buffer.

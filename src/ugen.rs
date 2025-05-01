@@ -367,7 +367,7 @@ ugen! {
     /// `CombC`. But if your delay time is fixed and sub-sample accuracy is not needed, this is the
     /// most CPU-efficient choice with no loss in quality.
     ///
-    /// The feedback coefficient is given by a mathmatical function that looks like this, where 0.001 is -60 dBFS:
+    /// The feedback coefficient is given by a mathematical function that looks like this, where 0.001 is -60 dBFS:
     ///
     /// ```
     /// fn feedback(delay: f32, decay: f32) -> f32 {
