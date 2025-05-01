@@ -281,3 +281,72 @@ where
 pub struct PlayerSnapshot {
     position: f64,
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::{pattern::sequence, scheduler::Scheduler};
+
+    use super::*;
+
+    #[test]
+    fn test_tempo_from_bmp() {
+        assert_eq!(
+            Tempo::from_bpm(60.0),
+            Tempo {
+                beat_duration: Duration::from_secs(1)
+            }
+        );
+        assert_eq!(
+            Tempo::from_bpm(120.0),
+            Tempo {
+                beat_duration: Duration::from_millis(500)
+            }
+        );
+    }
+
+    #[test]
+    fn check_default_tempo() {
+        assert_eq!(
+            Tempo::default(),
+            Tempo {
+                beat_duration: Duration::from_millis(500)
+            }
+        );
+        assert_eq!(
+            Tempo::from(Duration::default()),
+            Tempo {
+                beat_duration: Duration::default()
+            }
+        );
+    }
+
+    #[test]
+    fn check_player() {
+        let pattern: Pattern<String> = sequence(|s| {
+            for _ in 0..4 {
+                s.play(2.0, "2.0");
+                s.play(1.0, "1.0");
+                s.play(0.5, "0.5");
+                s.play(0.5, "0.5");
+            }
+        });
+
+        let mut player_result = Vec::new();
+
+        let event_handler = |_, event| player_result.push(event);
+        let player = Player::new(pattern, event_handler).tempo(Tempo::from_bpm(60.0));
+
+        match Scheduler::new().run(player) {
+            Ok(_) => {
+                assert_eq!(
+                    player_result,
+                    vec![
+                        "2.0", "1.0", "0.5", "0.5", "2.0", "1.0", "0.5", "0.5", "2.0", "1.0",
+                        "0.5", "0.5", "2.0", "1.0", "0.5", "0.5"
+                    ]
+                )
+            }
+            Err(_) => panic!("Test failed"),
+        }
+    }
+}
